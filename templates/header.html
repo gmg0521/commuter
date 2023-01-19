@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      $(function () {
+        if (getCookie("name") == "") {
+          $("#curUser").html("안녕하세요!");
+        } else {
+          $("#curUser").html(getCookie("name"));
+        }
+      });
+    </script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='header.css')}}"
+    />
+  </head>
+  <body>
+    <div class="container p-3">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">출근부</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">홈</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/management">출퇴근 기록</a>
+              </li>
+          </div>
+        </div>
+      </nav>
+      <div class="d-flex justify-content-end m-3">
+        <p id="curUser"></p>
+      </div>
+    </div>
+  </body>
+</html>

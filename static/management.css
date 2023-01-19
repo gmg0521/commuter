@@ -1,0 +1,115 @@
+#calendar {
+  min-height: 500px;
+  max-height: 800px;
+}
+
+#fc-dom-1 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0.9375rem;
+}
+button.fc-next-button.fc-button.fc-button-primary,
+button.fc-prev-button.fc-button.fc-button-primary,
+button.fc-dayGridMonth-button.fc-button.fc-button-primary,
+button.fc-timeGridWeek-button.fc-button.fc-button-primary,
+#calendar > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button {
+  font-size: 0.75em;
+}
+
+button.fc-next-button.fc-button.fc-button-primary,
+button.fc-prev-button.fc-button.fc-button-primary {
+  align-self: center;
+  height: 30px;
+}
+
+#monthHour {
+  padding: 6px;
+  background-color: pink;
+  border: 2px solid rgb(255, 204, 204);
+  border-radius: 5px;
+  color: black;
+  font-size: 1em;
+}
+
+@media (min-width: 576px) {
+  #fc-dom-1 {
+    font-size: 2rem;
+  }
+  button.fc-next-button.fc-button.fc-button-primary,
+  button.fc-prev-button.fc-button.fc-button-primary,
+  button.fc-dayGridMonth-button.fc-button.fc-button-primary,
+  button.fc-timeGridWeek-button.fc-button.fc-button-primary,
+  #calendar > div.fc-header-toolbar.fc-toolbar > div:nth-child(3) > button {
+    font-size: 1em;
+  }
+  button.fc-next-button.fc-button.fc-button-primary,
+  button.fc-prev-button.fc-button.fc-button-primary {
+    align-self: center;
+    height: 50px;
+  }
+
+  #monthHour {
+    padding: 6px;
+    background-color: pink;
+    border: 2px solid rgb(255, 204, 204);
+    border-radius: 5px;
+    color: black;
+    font-size: 2em;
+  }
+  #curUser {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+  color: black;
+}
+
+#calendar > div.fc-header-toolbar.fc-toolbar > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+#calendar
+  > div.fc-view-harness.fc-view-harness-active
+  > div
+  > table
+  > thead
+  > tr
+  > th
+  > div
+  > div
+  > table
+  > thead
+  > tr
+  > th.fc-col-header-cell.fc-day
+  > div
+  > a {
+  color: black;
+  text-decoration: none;
+}
+
+.fc-day.fc-day-sun a {
+  color: red !important;
+}
+
+.fc-day.fc-day-sat a {
+  color: blue !important;
+}
+
+.fc .fc-daygrid-day-number {
+  color: black;
+  text-decoration: none;
+}
+
+.fc-daygrid-day:hover {
+  background: rgb(116, 139, 218);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.fc .fc-daygrid-day.fc-day-today:hover {
+  background: rgb(116, 139, 218);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}

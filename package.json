@@ -1,0 +1,25 @@
+{
+  "name": "checkmeout",
+  "version": "1.0.0",
+  "description": "node.js project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmg0521/gmg0521.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "eEeE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmg0521/gmg0521/issues"
+  },
+  "homepage": "https://github.com/gmg0521/gmg0521#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

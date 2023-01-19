@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>출근부 ::: Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css')}}"
+    />
+    <script src="{{ url_for('static', filename='main.js')}}"></script>
+    <script src="{{ url_for('static', filename='cookie.js')}}"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+      integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"
+      integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        // nav창 로드
+        $("#headers").load("/header");
+
+        // 출근상태 확인
+        name = getCookie("name");
+        commuteStat = getTime(name);
+        $("#name").val(name);
+        if (commuteStat == "") {
+          commuteStat = "false";
+          setCookie("commuteStat", commuteStat, 1);
+        } else if (commuteStat == "false") {
+          btnCommute("퇴근");
+          nameInput("퇴근");
+          console.log("퇴근");
+        }
+        // else {
+        //   btnCommute("출근");
+        //   nameInput("출근");
+        //   console.log("출근 중");
+        // }
+        // 출근자 이름 가져와서 시간 갱신
+        console.log(commuteStat);
+      });
+    </script>
+  </head>
+
+  <body class="m-auto">
+    <div class="text-center" id="headers"></div>
+    <div class="container my-3">
+      <div class="text-center m-3">
+        <h1 id="clock" class="fs-1">현재시각</h1>
+      </div>
+
+      <div class="container">
+        <div class="form-floating w-50 m-auto">
+          <input type="text" class="form-control" id="name" />
+          <label id="namePH" for="name">이름</label>
+        </div>
+        <div class="w-50 mx-auto my-3 text-center">
+          <button
+            class="btn btn-primary btn-lg w-50"
+            id="commute"
+            style="min-width: 150px"
+            onclick="commute()"
+          >
+            출근
+          </button>
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div
+              id="liveToast"
+              class="toast hide"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              <div class="toast-header">
+                <svg
+                  class="bd-holder-img rounded me-2"
+                  width="20"
+                  height="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <rect width="100%" height="100%" fill="#007aff"></rect>
+                </svg>
+                <strong class="me-auto">알림</strong>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="toast"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="toast-body" id="toastBody">출근하였습니다!</div>
+            </div>
+          </div>
+          <div class="text-center row justify-content-center m-2 fs-3">
+            <div
+              class="text-bg-success align-self-center m-2 py-2 w-25 rounded-5"
+              style="min-width: 150px"
+              id="gtw"
+            >
+              출근시간 : &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <div
+              class="text-bg-danger align-self-center m-2 py-2 w-25 rounded-5"
+              style="min-width: 150px"
+              id="gow"
+            >
+              퇴근시간 : &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var target = $("#clock");
+    loadClock();
+    setInterval(loadClock, 1000);
+  </script>
+</html>
